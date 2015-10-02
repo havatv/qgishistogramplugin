@@ -45,7 +45,7 @@ from PyQt4.QtGui import QGraphicsScene, QBrush, QPen, QColor
 from PyQt4.QtGui import QGraphicsView
 from qgis.core import QgsMessageLog, QgsMapLayerRegistry, QgsMapLayer
 from qgis.core import QGis
-#from qgis.gui import QgsMessageBar
+from qgis.gui import QgsMessageBar
 
 from histogram_engine import Worker
 
@@ -96,6 +96,9 @@ class histogramDialog(QDialog, FORM_CLASS):
         cancelButton.clicked.connect(self.killWorker)
         closeButton.clicked.connect(self.reject)
         browseButton.clicked.connect(self.browse)
+        #minvalSBCh = self.minValueSpinBox.valueChanged[str]
+        #minvalSBCh.connect(self.updateBins)
+        #minvalSBCh.connect(function ....)
         #binsSBCh = self.binsSpinBox.valueChanged[str]
         #binsSBCh.connect(self.updateBins)
 
@@ -195,7 +198,7 @@ class histogramDialog(QDialog, FORM_CLASS):
         # remove widget from the message bar (pop)
         #self.iface.messageBar().popWidget(self.messageBar)
         if ok and ret is not None:
-            self.showInfo("Histogram: " + str(ret))
+            #self.showInfo("Histogram: " + str(ret))
             self.result = ret
             # report the result
             # As a CSV file:
@@ -450,27 +453,27 @@ class histogramDialog(QDialog, FORM_CLASS):
 
     def showError(self, text):
         """Show an error."""
-        #self.iface.messageBar().pushMessage(self.tr('Error'), text,
-        #                                    level=QgsMessageBar.CRITICAL,
-        #                                    duration=3)
+        self.iface.messageBar().pushMessage(self.tr('Error'), text,
+                                            level=QgsMessageBar.CRITICAL,
+                                            duration=3)
         QgsMessageLog.logMessage('Error: ' + text,
                                  self.HISTOGRAM,
                                  QgsMessageLog.CRITICAL)
 
     def showWarning(self, text):
         """Show a warning."""
-        #self.iface.messageBar().pushMessage(self.tr('Warning'), text,
-        #                                    level=QgsMessageBar.WARNING,
-        #                                    duration=2)
+        self.iface.messageBar().pushMessage(self.tr('Warning'), text,
+                                            level=QgsMessageBar.WARNING,
+                                            duration=2)
         QgsMessageLog.logMessage('Warning: ' + text,
                                  self.HISTOGRAM,
                                  QgsMessageLog.WARNING)
 
     def showInfo(self, text):
         """Show info."""
-        #self.iface.messageBar().pushMessage(self.tr('Info'), text,
-        #                                    level=QgsMessageBar.INFO,
-        #                                    duration=2)
+        self.iface.messageBar().pushMessage(self.tr('Info'), text,
+                                            level=QgsMessageBar.INFO,
+                                            duration=2)
         QgsMessageLog.logMessage('Info: ' + text,
                                  self.HISTOGRAM,
                                  QgsMessageLog.INFO)
@@ -508,7 +511,8 @@ class histogramDialog(QDialog, FORM_CLASS):
 
     # Overriding
     def showEvent(self, event):
-        self.showInfo("showEvent")
+        return
+        #self.showInfo("showEvent")
         #self.updateBins()
 
 
