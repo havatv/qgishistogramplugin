@@ -9,8 +9,8 @@
 [general]
 name=Histogram
 qgisMinimumVersion=2.0
-description=Create a histogram showing the distribution of a numerical attribute
-about=Visualises the distribution for a numerical attribute.  The histogram can be saved to a CSV file.
+description=Create histogram of a numerical attribute
+about=The Histogram Plugin visualises the distribution of a numerical vector layer attribute. It has no external library dependency. The number of bins can be specified, as can the range of values to include and the bin size.  A cumulative view is offered as an alternative to the histogram view. The histogram can be saved to a CSV file.
 version=1.0
 author=Håvard Tveite, NMBU
 email=havard.tveite@nmbu.no
@@ -22,8 +22,8 @@ email=havard.tveite@nmbu.no
 changelog=1.0
     -- First public version
 # Tags are comma separated with spaces allowed
-tags=histogram,numeric,numerical,number,statistics,frequency
-homepage=http://arken.umb.no/~havatv/gis/qgisplugins/Histogram/
+tags=histogram,numeric,numerical,number,statistics,frequency,cumulative
+homepage=http://arken.nmbu.no/~havatv/gis/qgisplugins/Histogram/
 tracker=https://github.com/havatv/qgishistogramplugin/issues
 repository=https://github.com/havatv/qgishistogramplugin.git
 icon=icon.png
